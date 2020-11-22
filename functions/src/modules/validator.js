@@ -1,4 +1,4 @@
-moment.locale('ro_md')
+const moment = require("moment");
 
 // a) Ziua de start nu poate fi zi de weekend sau sarabtoare legala
 // b) Data nu trebuie sa fie egal cu start date, macar cu o zi inainte

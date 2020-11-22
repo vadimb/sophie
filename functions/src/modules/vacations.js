@@ -5,12 +5,6 @@ const { HR_EMAIL } = require('../config');
 const validator = require("./validator");
 const { InvalidDateError } = require("./errors");
 
-const getVacationTypes = async () => Promise.resolve(
-    [{ type: "annual", name: "Paid annual leave" },
-    { type: "unpaid", name: "Unpaid annual leave" },
-    { type: "blood", name: "Blood donation leav" }
-    ]);
-
 const requestVacation = async (data) => {
     const form = {
         type: data.type,
@@ -20,16 +14,16 @@ const requestVacation = async (data) => {
     const fullName = data['fullName'];
     form.fields.push({
         value: fullName,
-        name: 'EmployeeFullName'
+        name: 'fullName'
     })
     form.fields.push({
         value: data['profession'],
-        name: 'EmployeeProfession'
+        name: 'profession'
     })
 
     const requestDate = moment().format('MM/DD/YYYY');
     form.fields.push({
-        name: 'RequestSignDate',
+        name: 'requestDate',
         value: requestDate,
     });
     const [startDateRaw, endtDateRaw] = data['date'].replace("from", "").replace(" to ", "T").split("T");
@@ -44,16 +38,16 @@ const requestVacation = async (data) => {
             validator.annual({ startDateRaw, endDateRaw});
         }
         form.fields.push({
-            name: 'VacationStartDate',
+            name: 'startDate',
             value: startDate,
         });
         form.fields.push({
-            name: 'VacationEndDate',
+            name: 'endDate',
             value: endDate,
         });
     } else if (form.type === 'blood') {
         form.fields.push({
-            name: 'VacationStartDate',
+            name: 'startDate',
             value: startDate,
         });
     }
@@ -65,4 +59,4 @@ const requestVacation = async (data) => {
         }));
 }
 
-module.exports = { getVacationTypes, requestVacation };
+module.exports = { requestVacation };

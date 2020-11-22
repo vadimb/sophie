@@ -7,6 +7,12 @@ const EMAIL_SUBJECT = 'eTime Vacation';
 
 const TEMPLATES = {
     annual: "templates/annual.pdf",
+    blood: "templates/blood.pdf",
+    unpaid: "templates/unpaid.pdf",
+};
+
+const HR_EMAIL = {
+    MD: "elena.suman@stefanini.com",
 };
 
 module.exports = {
@@ -15,5 +21,6 @@ module.exports = {
     SMAPT_PASS,
     EMAIL_FROM,
     EMAIL_SUBJECT,
-    TEMPLATES
+    TEMPLATES,
+    HR_EMAIL
 };

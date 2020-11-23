@@ -1,3 +1,5 @@
+const functions = require('firebase-functions');
+
 class ValidationError extends Error {
     constructor(message) {
       super(message);

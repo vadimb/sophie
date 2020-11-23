@@ -2,7 +2,6 @@ const moment = require("moment");
 const { sendMail } = require('./mail/mail');
 const { fillForm } = require('./form');
 const { HR_EMAIL } = require('../config');
-const validator = require("./validator");
 const { InvalidDateError } = require("./errors");
 
 const requestVacation = async (data) => {
@@ -26,17 +25,17 @@ const requestVacation = async (data) => {
         name: 'requestDate',
         value: requestDate,
     });
-    const [startDateRaw, endtDateRaw] = data['date'].replace("from", "").replace(" to ", "T").split("T");
+    const [startDateRaw, endDateRaw] = data['date'].replace("from", "").replace(" to ", "T").split("T");
     const startDate = moment(startDateRaw).format('MM/DD/YYYY');
-    const endDate = moment(endtDateRaw).format('MM/DD/YYYY');
+    const endDate = moment(endDateRaw).format('MM/DD/YYYY');
 
     if (endDate === startDate) {
         throw new InvalidDateError(startDate);
     }
     if (form.type === 'annual' || form.type === 'unpaid') {
-        if(annual) {
-            validator.annual({ startDateRaw, endDateRaw});
-        }
+        // if (form.type === 'annual') {
+        //     validator.annual({ startDateRaw, endDateRaw });
+        // }
         form.fields.push({
             name: 'startDate',
             value: startDate,

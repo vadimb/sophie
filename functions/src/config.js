@@ -1,8 +1,8 @@
 const SMAPT_HOST = 'in-v3.mailjet.com';
-const SMAPT_USER = '970cd4d7e3395f019edf4991b327663f';
-const SMAPT_PASS = 'ee28b6edfa104ad80018ca45920ce286';
+const SMAPT_USER = 'd3a7ec23c02786349814a266b805fadb';
+const SMAPT_PASS = '57fb395ba8194f38af8659439e540930';
 
-const EMAIL_FROM = 'vadim.batin@stefanini.com';
+const EMAIL_FROM = 'mihai.chitanu@stefanini.com';
 const EMAIL_SUBJECT = 'eTime Vacation';
 
 const TEMPLATES = {

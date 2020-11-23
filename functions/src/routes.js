@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/vacations', (req, res) => {
     const form = req.body;
     return requestVacation(form)
-        .then(() => res.status(200).end())
+        .then(() => res.status(200).json({ error: null }))
         .catch((error) => validationErrorHandler(error, req, res));
 });
 
